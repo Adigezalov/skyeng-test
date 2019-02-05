@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Roboto", sans-serif; }
+
+body, html {
+  position: relative;
+  min-height: 100%; }
+
+.body_overflow {
+  overflow-y: hidden; }
+
+.body_shadow::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #242424;
+  opacity: 0.9;
+  z-index: 10;
+  content: ""; }
+
+.content {
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #85a5d4; }
+
+.tariffs {
+  display: grid;
+  grid-template-columns: 280px 280px 280px;
+  width: 900px;
+  margin: 0 auto;
+  padding: 30px 30px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 8px 20px #444;
+          box-shadow: 0 8px 20px #444;
+  background-color: #fff; }
+  .tariffs .tariff {
+    cursor: pointer; }
+    .tariffs .tariff:hover {
+      background-color: #eeeeee; }
+
+.tariff {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 50px 15px;
+  border-radius: 5px; }
+  .tariff .icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 30px; }
+  .tariff .title {
+    text-transform: uppercase;
+    color: #5572d6;
+    letter-spacing: 3px; }
+  .tariff .slogan {
+    padding: 20px 0;
+    font-size: 11px;
+    text-align: center;
+    color: #a7a7a7; }
+  .tariff .price {
+    font-size: 32px;
+    font-weight: 700;
+    color: #5572d6; }
+  .tariff .minitext {
+    font-size: 14px; }
+
+.modal_content {
+  position: fixed;
+  display: none;
+  top: 30%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background-color: transparent;
+  z-index: 10; }
+  .modal_content .modal {
+    position: relative;
+    width: 280px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: white; }
+    .modal_content .modal .close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer; }
+
+@media (max-width: 900px) {
+  .content {
+    padding-top: 30px;
+    padding-bottom: 30px; }
+
+  .tariffs {
+    grid-template-columns: 260px;
+    width: 280px;
+    padding: 15px 10px 15px; }
+
+  .modal {
+    width: 260px; } }

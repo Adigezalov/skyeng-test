@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Skyeng</title>
+</head>
+<body>
+<div>
+    <div>
+        <label for="n1">Число 1</label>
+        <input type="text" id="n1">
+    </div>
+    <div>
+        <label for="n2">Число 2</label>
+        <input type="text" id="n2">
+    </div>
+    <div>
+        <button id="button" onclick="additionTwoNumbers()">Сложить</button>
+    </div>
+</div>
+<script>
+
+    const additionTwoNumbers = () => {
+        let number1 = document.getElementById('n1').value;
+        let number2 = document.getElementById('n2').value;
+
+        // Переходящая единица
+        let boost = 0;
+
+        // Длина максимального числа
+        let length = 0;
+
+        // Результат
+        let sum = [];
+
+        // Переводим строки в массивы
+        let arrayNumber1 = number1.split('');
+        let arrayNumber2 = number2.split('');
+
+        // Длины массивов
+        let lengthArrayNumber1 = arrayNumber1.length;
+        let lengthArrayNumber2 = arrayNumber2.length;
+
+        // Проверяем длины массивов и выравниваем их путем добавления нулей в начало
+        if (lengthArrayNumber1 - lengthArrayNumber2 > 0) {
+            length = lengthArrayNumber1;
+            for (let i = 0; i < lengthArrayNumber1 - lengthArrayNumber2; i++) {
+                arrayNumber2.unshift('0');
+            }
+        }
+        if (lengthArrayNumber1 - lengthArrayNumber2 < 0) {
+            length = lengthArrayNumber2;
+            for (let i = 0; i < lengthArrayNumber2 - lengthArrayNumber1; i++) {
+                arrayNumber1.unshift('0');
+            }
+        }
+
+        // Складываем массива поэлементно переводя каждое значение в Number
+        // Записываем получившиееся значение в начало результирующего массива sum переводя их в String
+        for (let i = length - 1; i >= 0; i--) {
+            let number = Number(arrayNumber1[i]) + Number(arrayNumber2[i]);
+            number = number + boost;
+            if (number < 10) {
+                boost = 0;
+            }
+            if (number > 9) {
+                number = number - 10;
+                boost = 1;
+            }
+            sum.unshift(String(number));
+        }
+
+        // Если после всех операция в boost осталась единица, то добавляем ее в начало массива sum
+        if (boost === 1) {
+            sum.unshift(String(boost));
+        }
+
+        // Выодим получившееся значение в alert
+        alert(sum.join(''));
+    };
+
+</script>
+</body>
+</html>
